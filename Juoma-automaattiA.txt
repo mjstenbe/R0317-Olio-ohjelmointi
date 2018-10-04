@@ -1,0 +1,73 @@
+
+public class JuomaAutomaatti {
+	
+	private int teetä;
+	private int kahvia;
+	private int kaakaota;
+	
+	//konstruktori
+	public JuomaAutomaatti(){
+		teetä=50;
+		kahvia=50;
+		kaakaota=50;
+	}
+	
+	public void valmistaKahvi(){	
+		if(kahvia==0){
+			System.out.println("Kahvia ei ole enää jäljellä! Täytä säiliö\n");
+		}
+		else {
+			kahvia-=10;
+			System.out.println("Odota hetki, kahvisi valmistuu... ");
+		}
+	}
+	
+	public void valmistaTee(){
+		if(teetä==0){
+			System.out.println("Teetä ei ole enää jäljellä! Täytä säiliö\n");
+		}
+		else {
+			teetä-=10;
+			System.out.println("Odota hetki, teesi valmistuu... ");
+		}
+	}
+	
+	public void valmistaKaakao(){
+		if(kaakaota==0){
+			System.out.println("Kaakaota ei ole enää jäljellä! Täytä säiliö\n");
+		}
+		else {
+			kaakaota-=10;
+			System.out.println("Odota hetki, kaakaosi valmistuu... ");
+		}
+	}
+	
+	public String toString() {
+		return "Kahvia jäljellä: "+ kahvia + ", Teetä jäljellä: " + teetä + ", Kaakaota jäljellä: " + kaakaota +"\n\n";
+	}
+
+
+	public static void main(String[] args) {
+		
+		JuomaAutomaatti omaKone = new JuomaAutomaatti();
+		
+			omaKone.valmistaKahvi();
+			System.out.print(omaKone);
+			omaKone.valmistaKahvi();
+			System.out.print(omaKone);
+			omaKone.valmistaTee();
+			System.out.print(omaKone);
+			omaKone.valmistaTee();
+			System.out.print(omaKone);
+			omaKone.valmistaTee();
+			System.out.print(omaKone);
+			omaKone.valmistaTee();
+			System.out.print(omaKone);
+			omaKone.valmistaTee();
+			System.out.print(omaKone);
+			omaKone.valmistaTee();	
+			omaKone.valmistaKaakao();
+			System.out.print(omaKone);
+	}
+
+}
