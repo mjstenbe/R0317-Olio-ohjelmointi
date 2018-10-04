@@ -1,0 +1,95 @@
+import java.util.Scanner;
+
+public class JuomaAutomaatti {
+
+	private int teetä;
+	private int kahvia;
+	private int kaakaota;
+
+	// konstruktori
+	public JuomaAutomaatti() {
+		teetä = 50;
+		kahvia = 50;
+		kaakaota = 50;
+	}
+
+	public void valmistaKahvi() {
+		if (kahvia == 0) {
+			System.out.println("Kahvia ei ole enää jäljellä! Täytä säiliö\n");
+		} else {
+			kahvia -= 10;
+			System.out.println("Odota hetki, kahvisi valmistuu... ");
+			System.out.println("Kahvia jäljellä: " + kahvia + ", Teetä jäljellä: " + teetä + ", Kaakaota jäljellä: "
+					+ kaakaota + "\n");
+		}
+	}
+
+	public void valmistaTee() {
+		if (teetä == 0) {
+			System.out.println("Teetä ei ole enää jäljellä! Täytä säiliö\n");
+		} else {
+			teetä -= 10;
+			System.out.println("Odota hetki, teesi valmistuu... ");
+			System.out.println("Kahvia jäljellä: " + kahvia + ", Teetä jäljellä: " + teetä + ", Kaakaota jäljellä: "
+					+ kaakaota + "\n");
+		}
+	}
+
+	public void valmistaKaakao() {
+		if (kaakaota == 0) {
+			System.out.println("Kaakaota ei ole enää jäljellä! Täytä säiliö\n");
+		} else {
+			kaakaota -= 10;
+			System.out.println("Odota hetki, kaakaosi valmistuu... ");
+			System.out.println("Kahvia jäljellä: " + kahvia + ", Teetä jäljellä: " + teetä + ", Kaakaota jäljellä: "
+					+ kaakaota + "\n");
+		}
+	}
+
+	public boolean onnistuuko() {
+		int luku = (int) (Math.random() * 100 + 1);
+		if (luku > 0 && luku < 26) {
+			System.out.println("Ei onnistu, kiitos kuitenkin rahoista!\n");
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public String toString() {
+		return "***** Juoma-automaatti *****\n\n" + "1. Kahvi\n" + "2. Tee\n" + "3. Kaakao\n" + "4. Lopeta\n\n"
+				+ "****************************\n";
+	}
+
+	public static void main(String[] args) {
+
+		Scanner lukija = new Scanner(System.in);
+
+		JuomaAutomaatti omaKone = new JuomaAutomaatti();
+		int valinta;
+
+		do {
+			System.out.print(omaKone);
+			valinta = lukija.nextInt();
+			boolean onnistuuko = omaKone.onnistuuko();
+			if (onnistuuko == true) {
+				switch (valinta) {
+				case 1:
+					omaKone.valmistaKahvi();
+					break;
+				case 2:
+					omaKone.valmistaTee();
+					break;
+				case 3:
+					omaKone.valmistaKaakao();
+					break;
+				default:
+					break;
+				}
+			} 
+		} while (valinta < 4 && valinta > 0);
+
+		lukija.close();
+	}
+
+}
